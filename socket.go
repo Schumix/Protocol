@@ -11,7 +11,7 @@ import (
 )
 
 var conn net.Conn
-var connectionState = make(chan bool)
+var connectionState = make(chan int)
 var state = STATE_CLOSED
 var mHost string
 
