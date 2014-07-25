@@ -1,7 +1,10 @@
 package protocol
 
+const MIN_SCHUMIX_VERSION = "4.1.6"
+const VERSION = "0.2.2"
+
 const MAX_BUFFER_SIZE = 262144 // 8^6 byte = 256 MB
-var PACKET_SEPARATOR = []byte("|;|")
+const PACKET_SEPARATOR = "|;|"
 
 const (
 	SCMSG_PACKET_NULL     = 0x0
@@ -16,12 +19,4 @@ const (
 	SMSG_PONG             = 0x09
 	CMSG_SCHUMIX_VERSION  = 0x10
 	SMSG_SCHUMIX_VERSION  = 0x11
-)
-
-// connection states
-const (
-	STATE_OPENING = iota
-	STATE_OPEN
-	STATE_CLOSING
-	STATE_CLOSED
 )
