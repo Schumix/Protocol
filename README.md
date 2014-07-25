@@ -1,5 +1,5 @@
 # Protocol
-### Schumix-Webadmin socket commination protocol
+### Schumix-Webadmin socket intercommination protocol
 
 #### AUTHORS: See `AUTHORS` file.
 #### LICENCE: GNU GPL v3
