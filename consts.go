@@ -1,12 +1,13 @@
 package protocol
 
-const MIN_SCHUMIX_VERSION = "4.1.6"
-const VERSION = "0.2.2"
-
-const MAX_BUFFER_SIZE = 262144 // 8^6 byte = 256 MB
-const PACKET_SEPARATOR = "|;|"
-
 const (
+	MIN_SCHUMIX_VERSION = "4.1.6"
+	VERSION             = "0.2.2"
+
+	MAX_BUFFER_SIZE = 262144 // 8^6 = 256 MB
+
+	PACKET_SEPARATOR = "|;|"
+
 	SCMSG_PACKET_NULL     = 0x0
 	CMSG_REQUEST_AUTH     = 0x01
 	SMSG_AUTH_APPROVED    = 0x02
