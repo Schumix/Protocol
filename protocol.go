@@ -3,46 +3,42 @@ package protocol
 import (
 	"fmt"
 	"github.com/Schumix/semver"
-	"net"
+	"io"
 	"strconv"
 )
 
-type Settings struct {
-	Conn net.Conn
-}
+var w io.Writer
 
-var settings Settings
-
-func Setup(user_sett *Settings) {
-	settings = *user_sett
+func UseConn(_w io.Writer) {
+	w = _w
 }
 
 func SendPing() {
 	msg := strconv.Itoa(CMSG_PING) + PACKET_SEPARATOR
-	fmt.Fprint(settings.Conn, msg)
+	fmt.Fprint(w, msg)
 }
 
 func SendPong() {
 	msg := strconv.Itoa(CMSG_PONG) + PACKET_SEPARATOR
-	fmt.Fprint(settings.Conn, msg)
+	fmt.Fprint(w, msg)
 }
 
 func SendCloseSignal() {
 	msg := strconv.Itoa(CMSG_CLOSE_CONNECTION) + PACKET_SEPARATOR +
 		"uh. stomachache. shutting down for now." + PACKET_SEPARATOR
-	fmt.Fprint(settings.Conn, msg)
+	fmt.Fprint(w, msg)
 }
 
 func RegConnection() {
 	msg := strconv.Itoa(CMSG_REQUEST_AUTH) + PACKET_SEPARATOR +
 		"schumix webadmin (reg GUID)" + PACKET_SEPARATOR +
 		md5_gen("schumix") + PACKET_SEPARATOR
-	fmt.Fprint(settings.Conn, msg)
+	fmt.Fprint(w, msg)
 }
 
 func RequestVersion() {
 	msg := strconv.Itoa(CMSG_SCHUMIX_VERSION) + PACKET_SEPARATOR
-	fmt.Fprint(settings.Conn, msg)
+	fmt.Fprint(w, msg)
 }
 
 func CheckVersion(ver string) bool {
